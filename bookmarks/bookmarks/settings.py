@@ -33,13 +33,15 @@ SECRET_KEY = env("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['bookmark.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
+    'social_django',
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -78,6 +80,10 @@ TEMPLATES = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+                            'django.contrib.auth.backends.ModelBackend',
+                            'account.authentication.EmailAuthBackend',
+                          ]
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
 
