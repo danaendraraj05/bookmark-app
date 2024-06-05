@@ -48,6 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'images.apps.ImagesConfig',
+    'easy_thumbnails',
     
 ]
 
@@ -83,6 +85,8 @@ TEMPLATES = [
 AUTHENTICATION_BACKENDS = [
                             'django.contrib.auth.backends.ModelBackend',
                             'account.authentication.EmailAuthBackend',
+                            'social_core.backends.facebook.FacebookOAuth2',
+                            'social_core.backends.google.GoogleOAuth2',
                           ]
 WSGI_APPLICATION = 'bookmarks.wsgi.application'
 
@@ -130,6 +134,14 @@ USE_L10N = True
 
 USE_TZ = True
 
+SECURE_SSL_REDIRECT = True
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+SECURE_HSTS_SECONDS = 3600
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_PRELOAD = True
+SECURE_REFERRER_POLICY = 'no-referrer-when-downgrade'
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -144,3 +156,16 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 MEDIA_URL = '/media/'  # This should be a non-empty string
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Easy Thumbnails Configuration
+THUMBNAIL_ALIASES = {
+    '': {
+        'thumbnail': {'size': (100, 100), 'crop': True},
+        # Define additional thumbnail aliases here
+    },
+}
+
+THUMBNAIL_BASEDIR = 'thumbnails'
+
+THUMBNAIL_DEFAULT_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
