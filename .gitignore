@@ -2,9 +2,11 @@
 __pycache__/
 *.py[cod]
 *$py.class
-.key
-.pem
-.crt
+cert.key
+cert.pem
+cert.crt
+
+media/
 
 # C extensions
 *.so
