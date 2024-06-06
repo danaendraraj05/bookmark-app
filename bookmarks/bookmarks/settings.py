@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'images.apps.ImagesConfig',
     'easy_thumbnails',
+    'actions.apps.ActionsConfig',
     
 ]
 
