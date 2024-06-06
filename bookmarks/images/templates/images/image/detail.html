@@ -33,6 +33,9 @@ $(document).ready(function() {
 <a href="{{ image.image.url }}">
     <img src="{{ image.image.url }}" class="image-detail">
 </a>
+<span class="count">
+    {{ total_views }} view{{ total_views|pluralize }}
+</span>
 {% with total_likes=image.users_like.count users_like=image.users_like.all %}
 <div class="image-info">
     <div>
