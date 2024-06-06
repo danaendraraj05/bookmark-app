@@ -175,3 +175,5 @@ ABSOLUTE_URL_OVERRIDES = {
  args=[u.username])
 }
 
+#THUMBNAIL_DEBUG = True
+
