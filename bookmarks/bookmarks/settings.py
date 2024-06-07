@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 
 import os
 import environ
+from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -50,6 +51,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'images.apps.ImagesConfig',
     'easy_thumbnails',
+    'actions.apps.ActionsConfig',
     
 ]
 
@@ -168,4 +170,15 @@ THUMBNAIL_ALIASES = {
 THUMBNAIL_BASEDIR = 'thumbnails'
 
 THUMBNAIL_DEFAULT_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
+ABSOLUTE_URL_OVERRIDES = {
+ 'auth.user': lambda u: reverse_lazy('user_detail',
+ args=[u.username])
+}
+
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 0
+
+#THUMBNAIL_DEBUG = True
 
